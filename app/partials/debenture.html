@@ -1,0 +1,173 @@
+<div class="box box-primary">
+
+	<form role="form" novalidate name="debentureForm">
+
+  	<div class="box-header">
+     <i class="glyphicon glyphicon-pencil"></i>
+        <h3 class="box-title">Debenture</h3>   
+	 
+  				<div class="form-group">
+  					<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+				</div>
+	 
+    </div><!-- /.box-header -->
+	<div class="box-body">
+		
+	<div class="form-group" 'has-error': debentureForm.selectedPerson.$error.required && debentureForm.selectedPerson.$dirty>
+	  <label for="inputModel" class="col-sm-1 control-label"> Person:</label>
+	  <div class="row">
+	  	<div class="col-md-4">
+			<p class="input-group">
+				<input type="text" ng-model="selectedPerson" typeahead="person as person.person for person in persons | filter:$viewValue | limitTo:20" class="form-control" placeholder="....." required/>
+			<span class="input-group-btn">
+                <button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-search"></i></button>
+              </span>
+			</p>
+			<p ng-show ="selectedPerson.id >=  0 ">
+			</p>
+		</div>
+	</div>
+ </div>	
+		
+		
+	<div class="form-group" 'has-error': debentureForm.selectedLocation.$error.required && debentureForm.selectedLocation.$dirty>
+	  <label for="inputModel" class="col-sm-1 control-label"> Location:</label>
+	  <div class="row">
+	  	<div class="col-md-4">
+			<p class="input-group">
+				<input type="text" ng-model="selectedLocation" typeahead="location as (location.location + ' ' + location.address) for location in locations| filter:$viewValue | limitTo:20" class="form-control" placeholder="....." required/>
+			<span class="input-group-btn">
+                <button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-search"></i></button>
+              </span>
+			</p>
+			<p ng-show ="selectedLocation.id >=  0 ">
+			</p>
+		</div>
+	</div>
+ </div>
+</div><!-- /.box-body --> 
+</div>	
+</div>
+   <div class="box">
+
+              <div class="box">
+                <div class="box-header">
+                  <i class="glyphicon glyphicon-list-alt"></i><h3 class="box-title">Equipment</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+					<table class="table table-striped" >
+							<thead>
+							<tr>
+								<th colspan="11">
+									<div class="col-sm-11">
+										<input type="search" ng-model="filter.search" ng-change="filter()" class="form-control" id="inputLocation" placeholder="....." required>	
+									</div>
+								</th>
+							</tr>
+							<tr>
+				<th><a href="#debenture" ng-click="orderByField='equipment.serialNumber'; reverseSort = !reverseSort">
+          Serial Number <span ng-show="orderByField == 'equipment.serialNumber'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>
+				<th><a href="#debenture" ng-click="orderByField='equipment.inventoryNumber'; reverseSort = !reverseSort">
+         Inventory Number<span ng-show="orderByField == 'equipment.inventoryNumber'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>
+
+				<th><a href="#debenture" ng-click="orderByField='equipmentStatus.status'; reverseSort = !reverseSort">
+          Status <span ng-show="orderByField == 'equipmentStatus.status'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>
+				<th><a href="#debenture" ng-click="orderByField='equipmentModel.model'; reverseSort = !reverseSort">
+         Model<span ng-show="orderByField == 'equipmentModel.model'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>	
+				<th><a href="#debenture" ng-click="orderByField='equipmentType.type'; reverseSort = !reverseSort">
+          Type <span ng-show="orderByField == 'equipmentType.type'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>
+					<th><a href="#debenture" ng-click="orderByField='equipment.aquisitionDate'; reverseSort = !reverseSort">
+          Acquiring Date <span ng-show="orderByField == 'equipment.aquisitionDate'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>
+				
+							</tr>
+
+							</thead>
+							<tbody>
+							<tr ng-repeat="row in filtered =( equipments | filter: filter.search ) | orderBy:orderByField:reverseSort | startFrom:(currentPage -1) * itemsPerPage | limitTo: itemsPerPage">
+										<td>{{row.equipment.serialNumber}}</td>
+										<td>{{row.equipment.inventoryNumber}}</td>
+        								<td>{{row.equipmentStatus.status}}</td>
+        								<td>{{row.equipmentModel.model}}</td>
+										<td>{{row.equipmentType.type}}</td>
+										<td>{{row.equipment.aquisitionDate | date}}</td>
+
+								        <td>
+            								  <input type="checkbox" ng-model="row.selected" />
+        								</td>
+							</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th colspan="11">
+										<pagination 
+													num-pages="numPages" 
+													total-items="totalItems" 
+													ng-model="currentPage" 
+													max-size="maxSize" 
+													items-per-page="itemsPerPage" 
+													class="pagination-sm" 
+													boundary-links="true" rotate="false">
+										</pagination>
+									</th>
+								</tr>
+							</tfoot>
+							</table>
+					
+                </div><!-- /.box-body -->
+				<div class="box-footer clearfix no-border" >
+			   			<button ng-show="selectedLocation.id >=  0  && selectedPerson.id >=  0 " class="btn btn-default pull-right" ng-click="selectDebenture(equipments)" ><i class="fa fa-plus">					</i> Choose</button>  
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+			</div>
+			
+		 <div class="box">
+
+              <div class="box">
+                <div class="box-header">
+                  <i class="glyphicon glyphicon-list-alt"></i><h3 class="box-title">Debentures</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+						<table class="table table-striped" >
+							<thead>
+							<tr>
+									<th> Serial Number </th>
+									<th> Inventory Number</th>
+									<th> Location</th>
+									<th> Person</th>						
+									<th> Status </th>
+									<th> Model</th>	
+									<th> Type </th>	
+							</tr>
+
+							</thead>
+							<tbody>
+							<tr ng-repeat="row in selection  | orderBy:orderByField:'row.equipment.serialNumber'" >
+										<td>{{row.equipment.serialNumber}}</td>
+										<td>{{row.equipment.inventoryNumber}}</td>
+										<td>{{selectedLocation.location}}</td>
+										<td>{{selectedPerson.lastName}} {{selectedPerson.firstName}}</td>
+        								<td>{{row.equipmentStatus.status}}</td>
+        								<td>{{row.equipmentModel.model}}</td>
+										<td>{{row.equipmentType.type}}</td>
+							</tr>
+							</tbody>
+							
+							</table>
+
+					</div>
+                </div><!-- /.box-body -->
+			 <div class="box-footer clearfix no-border" >
+			   <button ng-show="selection != null && selection.length >0" class="btn btn-default pull-right" ng-click="addDebenture(selection)" ><i class="fa fa-plus"></i> Charge</button>   
+			</div>	
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+			</div>
+
+		</from>
+</div>

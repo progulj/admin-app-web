@@ -1,0 +1,86 @@
+<div class="box box-primary">
+<form  novalidate name="addEquipmentForm" class="form-horizontal">
+
+  <div class="box-header">
+     <i class="glyphicon glyphicon-pencil"></i>
+        <h3 class="box-title">Add New Equipment:</h3>   
+	 
+  				<div class="form-group">
+  					<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+				</div>
+	 
+   </div><!-- /.box-header -->
+	<div class="box-body">
+	<div class="form-group">
+    <label for="inputInventoryNum" class="col-sm-1 control-label" >Inventory Number:</label>
+    <div class="col-sm-4">
+      <input type="text" ng-model="inventoryNumber"  class="form-control" id="inputInventoryNum" placeholder="....." capitalize >
+    </div>
+  </div>
+
+  <div class="form-group" 'has-error': addEquipment.serialNumber.$invalid >
+    <label for="inputSerialNum" class="col-sm-1 control-label" >Serial Number:</label>
+    <div class="col-sm-4">
+      <input type="text" ng-model="serialNumber"  class="form-control" name="inputSerialNum" placeholder="....." capitalize required>
+    </div>
+  </div>
+ <div class="form-group" 'has-error': addEquipment.selectedType.$error.required>
+	  <label for="inputType" class="col-sm-1 control-label"> Type:</label>
+	  <div class="row">
+	 	<div class="col-md-4">
+	 	<p class="input-group">
+			<input type="text" ng-model="selectedType" typeahead="type as type.type for type in types | filter:$viewValue | limitTo:20" class="form-control" placeholder="....." required/>
+			<span class="input-group-btn">
+                <button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-search"></i></button>
+             </span>
+  		</p>
+		</div>
+		</div>
+	</div>
+ 
+  <div ng-show="selectedType.id >= 0" class="form-group" 'has-error': addEquipment.selectedModel.$error.required && addEquipment.selectedModel.$dirty>
+	  <label for="inputModel" class="col-sm-1 control-label"> Model:</label>
+	  <div class="row">
+	  	<div class="col-md-4">
+			<p class="input-group">
+				<input type="text" ng-model="selectedModel" typeahead="model as model.model  for model in selectedType.models | filter:$viewValue | limitTo:20" class="form-control" placeholder="....." required/>
+			<span class="input-group-btn">
+                <button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-search"></i></button>
+              </span>
+			</p>
+		</div>
+	</div>
+ </div>
+<div class="form-group">
+    <label for="inputAcquiringDate" class="col-sm-1 control-label">Acqiuring Date:</label>
+	    <div class="row">
+        <div class="col-md-2">
+            <p class="input-group">
+              <input type="text"  ng-required="false" ng-model="acquiringDate" class="form-control" datepicker-popup="{{format}}" is-open="opened" min-date="minDate" max-date="'9999-12-31'"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
+  </div>
+
+<div class="form-group">
+    <label for="inputStatus" class="col-sm-1 control-label">Status:</label>
+    <div class="col-sm-2">
+      <input ng-disabled="true" type="text" ng-model="status" class="form-control" id="inputSatus" placeholder="Storage">
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="inputComment" class="col-sm-1 control-label">Comment:</label>
+    <div class="col-sm-4">
+		<textarea  type="text" ng-model="comment" class="form-control" id="inputComment" placeholder="......"></textarea>
+    </div>
+</div>
+ </div><!-- /.box-body -->
+		<div class="box-footer clearfix no-border" >
+			   <button ng-show="addEquipmentForm.$valid && addEquipmentForm.$dirty && selectedModel.id>0 && selectedType.id>0" class="btn btn-default pull-right" ng-click="addEquipment()" ><i class="fa fa-plus"></i> Add</button>   
+		</div>
+</form>
+</div>

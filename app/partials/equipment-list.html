@@ -1,0 +1,84 @@
+    <div class="row">
+			  <form  novalidate name="listEquipmentForm" class="form-horizontal">
+            <div class="col-xs-12">
+              <div class="box">
+
+              <div class="box">
+                <div class="box-header">
+                  <i class="glyphicon glyphicon-list-alt"></i><h3 class="box-title">Equipments</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+						<table class="table table-striped" >
+							<thead>
+							<tr>
+								<th colspan="11">
+									<div class="col-sm-11">
+										<input type="search" ng-model="filter.search" ng-change="filter()"  class="form-control" id="inputLocation" placeholder="....." required>	
+									</div>
+								</th>
+							</tr>
+							<tr>
+				<th><a href="#equipments" ng-click="orderByField='equipment.serialNumber'; reverseSort = !reverseSort">
+          Serial Number<span ng-show="orderByField == 'equipment.serialNumber'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>
+				<th><a href="#equipments" ng-click="orderByField='equipment.inventoryNumber'; reverseSort = !reverseSort">
+         Inventory Number<span ng-show="orderByField == 'equipment.inventoryNumber'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>
+
+				<th><a href="#equipments" ng-click="orderByField='equipmentStatus.status'; reverseSort = !reverseSort">
+          Status <span ng-show="orderByField == 'equipmentStatus.status'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>
+				<th><a href="#equipments" ng-click="orderByField='equipmentModel.model'; reverseSort = !reverseSort">
+         Model<span ng-show="orderByField == 'equipmentModel.model'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>	
+				<th><a href="#equipments" ng-click="orderByField='equipmentType.type'; reverseSort = !reverseSort">
+          Type <span ng-show="orderByField == 'equipmentType.type'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>
+				<th><a href="#equipments" ng-click="orderByField='equipment.aquisitionDate'; reverseSort = !reverseSort">
+         Acquiring Date <span ng-show="orderByField == 'equipment.aquisitionDate'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>
+				<th><a href="#equipments" ng-click="orderByField='equipment.comment'; reverseSort = !reverseSort">
+         Comment<span ng-show="orderByField == 'equipment.comment'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a></th>					
+							</tr>
+
+							</thead>
+							<tbody>
+							<tr ng-repeat="row in filtered = (equipments |filter: filter.search )| orderBy:orderByField:reverseSort | startFrom:(currentPage -1) * itemsPerPage | limitTo: itemsPerPage">
+										<td>{{row.equipment.serialNumber}}</td>
+										<td>{{row.equipment.inventoryNumber}}</td>
+        								<td>{{row.equipmentStatus.status}}</td>
+        								<td>{{row.equipmentModel.model}}</td>
+										<td>{{row.equipmentType.type}}</td>
+										<td>{{row.equipment.aquisitionDate | date}}</td>
+										<td>{{row.equipment.comment}}</td>
+								        <td>
+            								<button type="button" ng-click="updateEquipment(row)" class="btn btn-sm btn-danger">
+												<i class="glyphicon glyphicon-edit"></i></a>
+            								</button>
+        								</td>
+							</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th colspan="11">
+										<pagination 
+													num-pages="numPages" 
+													total-items="totalItems" 
+													ng-model="currentPage" 
+													max-size="maxSize" 
+													items-per-page="itemsPerPage" 
+													class="pagination-sm" 
+													boundary-links="true" rotate="false">
+										</pagination>
+									</th>
+								</tr>
+							</tfoot>
+							</table>
+					</div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+			</div>
+			</from>
+          </div><!-- /.row -->

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hardware | Admin</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.2 -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
+    <!-- FontAwesome 4.3.0 -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons 2.0.0 -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />    
+    <!-- Theme style -->
+    <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins 
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <!-- iCheck -->
+    <link href="plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
+    <!-- Morris chart -->
+    <link href="plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <!-- jvectormap -->
+    <link href="plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <!-- Date Picker -->
+    <link href="plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <!-- Daterange picker -->
+    <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+	  
+	<link type="text/css" rel="stylesheet" href="http://angularjs.org/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="http://angularjs.org/css/docs.css">
+    <style type="text/css">
+          .dropdown-menu .btn.btn-default.btn-sm.btn-block { width: 100%;} 
+           .dropdown-menu .btn.btn-default.btn-sm { background-color: #fff; background-image: none; } 
+    </style>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="skin-red" data-ng-app="app">
+    <div class="wrapper">
+      
+      <header class="main-header">
+        <!-- Logo -->
+        <a class="logo"><b>Admin</b>Hardware</a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <!-- Messages: style can be found in dropdown.less-->
+			  </ul>         
+          </div>
+        </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <li class="header">Main Menu</li>
+            <li class="active treeview">
+              <a href="#">
+                <i class="fa fa-circle-o text-danger"></i> <span>Hardware administration</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">		
+				  	<li><a href="#equipment/add"><i class="fa fa-circle-o"></i> Add Equipment</a></li>
+			  		<li><a href="#equipments"><i class="fa fa-circle-o"></i> Equipment List</a></li>
+				  	<li><a href="#debenture"><i class="fa fa-circle-o"></i> Debenture</a></li>
+				  	<li><a href="#discharge"><i class="fa fa-circle-o"></i> Discharge</a></li>
+				  	<li><a href="#debentures"><i class="fa fa-circle-o"></i> Debenture/Discharge List</a></li>
+					<li class="treeview">
+						  <a href="#">
+							<i class="fa fa-circle-o"></i> <span>Other</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						  </a>
+						  <ul class="treeview-menu">
+							  		<li><a href="#models"><i class="fa fa-circle-o"></i>Model Overview</a></li>
+									<li><a href="#types"><i class="fa fa-circle-o"></i>Type Overview</a></li>
+				  					<li><a href="#persons"><i class="fa fa-circle-o"></i>Person Overview</a></li>
+							  		<li><a href="#locations"><i class="fa fa-circle-o"></i>Location Overview</a></li>
+						  </ul>
+						</li>
+                    </li>
+                  </ul>
+                </li>
+         
+              </ul>
+              </ul>
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Right side column. Contains the navbar and content of the page -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+        
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+         
+			<div id="main">
+            	<div data-ng-view=""></div>
+        	</div>
+           
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      <footer class="main-footer">
+       
+      </footer>
+    </div><!-- ./wrapper -->
+
+    <!-- jQuery 2.1.3 -->
+    <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <!-- jQuery UI 1.11.2 -->
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    
+    <!-- Morris.js charts -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="plugins/morris/morris.min.js" type="text/javascript"></script>
+    <!-- Sparkline -->
+    <script src="plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+    <!-- jvectormap -->
+    <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="plugins/knob/jquery.knob.js" type="text/javascript"></script>
+    <!-- daterangepicker -->
+    <script src="plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <!-- datepicker -->
+    <script src="plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+    <!-- iCheck -->
+    <script src="plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <!-- Slimscroll -->
+    <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- FastClick -->
+    <script src='plugins/fastclick/fastclick.min.js'></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/app.min.js" type="text/javascript"></script>
+	 <!-- Angular -->
+	   	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script> 
+        <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.tpl.min.js"></script>
+		<script src="https://mgcrea.github.io/angular-strap/dist/angular-strap.js" data-semver="v2.1.6"></script>
+        <script src="https://mgcrea.github.io/angular-strap/dist/angular-strap.tpl.js" data-semver="v2.1.6"></script>
+        <script src="app/lib/smarttable/dist/smart-table.debug.js"></script> 
+        <script src="app/app.js"></script> 
+		<script src="app/js/controllers.js"></script> 
+
+  </body>
+</html>

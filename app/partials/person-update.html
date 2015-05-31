@@ -1,0 +1,42 @@
+<div class="box box-primary">
+<form  novalidate name="updatePersonForm" class="form-horizontal">
+
+  <div class="box-header">
+     <i class="glyphicon glyphicon-pencil"></i>
+        <h3 class="box-title">Person Update</h3>   
+	 
+  				<div class="form-group">
+  					<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+				</div>
+	 
+   </div><!-- /.box-header -->
+	<div class="box-body">
+                 
+		<div class="form-group">
+    				<label for="inputPersonFirstName" class="col-sm-1 control-label" >Name</label>
+					<div class="col-sm-4">
+						<input type="text" ng-model="person.firstName"  class="form-control" id="inputPersonFirstName"  capitalize required>	
+						
+					</div>
+		</div>
+		<div class="form-group">
+					<label for="inputPersonLastName" class="col-sm-1 control-label" >Surname</label>
+    				<div class="col-sm-4">
+      					<input type="text" ng-model="person.lastName"  class="form-control" id="inputPersonLastName"  capitalize required>
+						
+    				</div>
+		</div>
+		
+	
+
+				
+        </div><!-- /.box-body -->	
+		
+        	<div class="box-footer clearfix no-border" >
+			
+                  <button ng-hide="updatePersonForm.$invalid" class="btn btn-default pull-right" ng-click="updatePerson(person)" ><i class="fa fa-plus"></i> Update</button>   
+			
+		</div> 
+	</form>
+</div><!-- /.box -->
+
