@@ -27,7 +27,7 @@
 				<p class="input-group">
 <!-- 				<input type="text" class="form-control" ng-model="selectedType" bs-options="type.type for type in types" placeholder="....." id="selectType" limit="20"
 						   bs-typeahead  trigger = "focus" required> -->
-					<input type="text" ng-model="selectedType" typeahead="type as type.type for type in types | filter:$viewValue | limitTo:20" class="form-control" />
+					<input type="text" ng-model="selectedType" typeahead="type as type.type for type in types | filter:$viewValue | limitTo:20" class="form-control" placeholder="typeahead"/>
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-search"></i></button>
 					 </span>

@@ -29,7 +29,7 @@
 	  <div class="row">
 	 	<div class="col-md-4">
 	 	<p class="input-group">
-			<input type="text" ng-model="selectedType" typeahead="type as type.type for type in types | filter:$viewValue | limitTo:20" class="form-control" placeholder="....." required/>
+			<input type="text" ng-model="selectedType" typeahead="type as type.type for type in types | filter:$viewValue | limitTo:20" class="form-control" placeholder="typeahead" required/>
 			<span class="input-group-btn">
                 <button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-search"></i></button>
              </span>
@@ -42,7 +42,7 @@
 	  <div class="row">
 	  	<div class="col-md-4">
 			<p class="input-group">
-			<input type="text" ng-model="selectedModel" typeahead="model as model.model for model in selectedType.models | filter:$viewValue | limitTo:20" class="form-control" placeholder="....." required/>
+			<input type="text" ng-model="selectedModel" typeahead="model as model.model for model in selectedType.models | filter:$viewValue | limitTo:20" class="form-control" placeholder="typeahead" required/>
 			<span class="input-group-btn">
                 <button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-search"></i></button>
               </span>
@@ -68,7 +68,7 @@
 	  <div class="row">
 	 	<div class="col-md-4">
 	 	<p class="input-group">
-			<input type="text" ng-model="selectedStatus" typeahead="status as status.status for status in statuses | filter:$viewValue" class="form-control" placeholder="....." required/>
+			<input type="text" ng-model="selectedStatus" typeahead="status as status.status for status in statuses | filter:$viewValue" class="form-control" placeholder="typeahead" required/>
 			<span class="input-group-btn">
                 <button   type="button" class="btn btn-default" ><i class="glyphicon glyphicon-search"></i></button>
              </span>
